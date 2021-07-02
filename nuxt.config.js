@@ -52,7 +52,6 @@ export default {
   },
 
   serverMiddleware: [
-    '~/server-middleware/logger',
     { path: '/news', handler: '~/server-middleware/news.js' }
   ]
 }

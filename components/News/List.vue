@@ -77,7 +77,7 @@ export default {
           .$post('/news/getArticles', {
             searchText,
             from: yesterday,
-            to: today
+            to: today,
           })
           .then((result) => {
             this.isLoading = false
