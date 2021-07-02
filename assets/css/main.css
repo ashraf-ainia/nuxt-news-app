@@ -1,0 +1,41 @@
+.news-search-input {
+  margin-bottom: 1em;
+}
+
+.article-container {
+  box-shadow: 1px 1px 9px #ccc;
+  max-width: 100%;
+  margin-bottom: 1em
+}
+
+.app-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.app-link:hover {
+  text-decoration: none;
+}
+
+.app-link:hover>.app-link .article-container {
+  background-color: red !important;
+}
+
+.search-hint {
+  padding: 10em;
+  width: 100%;
+  text-align: center;
+}
+.selected-article-container{
+    padding-top: 2em;
+    margin-bottom: 5em;
+}
+.selected-article-title{
+    margin-bottom: 2em;
+}
+
+.articale-date-container{
+  padding: 1em;
+  margin-top: 1em;
+  border-top: #aaa 0.5px solid;
+}
