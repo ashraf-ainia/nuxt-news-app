@@ -6,8 +6,7 @@
         "use": "@nuxtjs/vercel-builder",
         "config": {
           "serverFiles": ["server-middleware/**"]
-        },
-        "internalServer": false
+        }
       }
     ]
   }
