@@ -51,8 +51,8 @@ export default {
   build: {
   },
 
-  env: {
-    NEWS_API_URL: 'https://newsapi.org/v2',
-    NEWS_KEY: '28ffa31431614b7aa2cb9a828c4740c3'
-  }
+  serverMiddleware: [
+    '~/server-middleware/logger',
+    { path: '/news', handler: '~/server-middleware/news.js' }
+  ]
 }

@@ -25,11 +25,11 @@
         :article="article"
       />
     </ul>
-    <div v-else class="search-hint" >
+    <div v-else class="search-hint">
       <p>
         <img src="~/assets/images/search-news.jpg" width="100" />
         Search news articles to list them here!
-        </p>
+      </p>
     </div>
   </div>
 </template>
@@ -38,7 +38,6 @@
 import dayjs from 'dayjs'
 import { getDirective } from 'vue-debounce'
 import Article from '../../Models/Article'
-// import dummy from '../../helpers/dummy'
 
 export default {
   directives: {
@@ -67,14 +66,6 @@ export default {
       return this.$store.state.news.articles
     },
   },
-  // mounted() {
-  //   // to remove
-  //   const dummyArticles = dummy.articles.map((el) => new Article(el))
-  //   this.$store.commit('news/setArticles', dummyArticles)
-  // },
-  // beforeMount() {
-  //   this.getNewsArticles()
-  // },
   methods: {
     async getNewsArticles() {
       this.isLoading = true
@@ -83,14 +74,11 @@ export default {
       if (this.queryText.trim()) {
         const searchText = encodeURI(this.queryText)
         await this.$axios
-          .$get(
-            `${process.env.NEWS_API_URL}/everything?q=${searchText}&from=${yesterday}&to=${today}&sortBy=popularity&pageSize=20&page=1`,
-            {
-              headers: {
-                Authorization: `Bearer ${process.env.NEWS_KEY}`,
-              },
-            }
-          )
+          .$post('/news/getArticles', {
+            searchText,
+            from: yesterday,
+            to: today
+          })
           .then((result) => {
             this.isLoading = false
             if (result.status === 'ok' && Array.isArray(result.articles)) {
@@ -100,14 +88,14 @@ export default {
               this.$store.commit('news/setArticles', fetchedArticles)
             }
           })
-          .catch(error => {
-            console.log("error: ", error.response?.data?.message)
+          .catch((error) => {
+            console.log('error: ', error.response?.data?.message)
             this.isLoading = false
             this.$store.commit('news/emptyArticles')
             this.$bvToast.toast(`Error: ${error.response?.data?.message}`, {
               title: error.response?.data?.code,
               autoHideDelay: 5000,
-              variant: 'danger'
+              variant: 'danger',
             })
           })
       } else {
