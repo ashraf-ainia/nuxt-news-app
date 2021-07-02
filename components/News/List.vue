@@ -74,7 +74,7 @@ export default {
       if (this.queryText.trim()) {
         const searchText = encodeURI(this.queryText)
         await this.$axios
-          .$post('./news/getArticles', {
+          .$post('/news/getArticles', {
             searchText,
             from: yesterday,
             to: today,
