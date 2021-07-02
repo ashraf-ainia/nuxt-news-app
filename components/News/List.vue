@@ -62,7 +62,7 @@ export default {
       if (this.queryText.trim()) {
         const searchText = encodeURI(this.queryText)
         await this.$axios
-          .$post(`${process.env.VERCEL_URL}/news/getArticles`, {
+          .$post(`https://news-app-puce.vercel.app/news/getArticles`, {
             searchText,
             from: yesterday,
             to: today,
