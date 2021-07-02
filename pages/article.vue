@@ -21,6 +21,11 @@
 <script>
 import dayjs from 'dayjs'
 export default {
+  head(){
+    return {
+      title: `Article | ${this.article.title}`,
+    }
+  },
   computed: {
     article() {
       const articleId = this.$route.query.id
